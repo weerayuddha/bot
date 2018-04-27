@@ -77,7 +77,6 @@ def handle_message(event):
                     TextSendMessage(text='ไม่สามารถวิเคราะห์รูปได้ค่ะ')
                 ])
 
-
     else:
 
         line_bot_api.reply_message(
