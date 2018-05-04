@@ -37,12 +37,12 @@ line_bot_api = LineBotApi(channel_access_token)
 handler = WebhookHandler(channel_secret)
 
 #คำเขียว
-line_bot_api = LineBotApi('25fh1/p3BJu916+Zs39hsZNgb50c1RPaMNl7QGRRhGgWxhE53obct8ss1lZuR9OovzRmgH6i9kBZtLRWagZZgGUAEGPmIUck3hTyJLoDwrOXPz0i+hb+EOLslTB9S+TFPr4F9zOHoWo+Cb8z12aE6gdB04t89/1O/w1cDnyilFU=')
-handler = WebhookHandler('9ba5e5c4f5acef2daedfd744e34b6da0')
+#line_bot_api = LineBotApi('25fh1/p3BJu916+Zs39hsZNgb50c1RPaMNl7QGRRhGgWxhE53obct8ss1lZuR9OovzRmgH6i9kBZtLRWagZZgGUAEGPmIUck3hTyJLoDwrOXPz0i+hb+EOLslTB9S+TFPr4F9zOHoWo+Cb8z12aE6gdB04t89/1O/w1cDnyilFU=')
+#handler = WebhookHandler('9ba5e5c4f5acef2daedfd744e34b6da0')
 
 #คำแก้ว
-line_bot_api = LineBotApi('etLFKVdRJ9GW/Je0Sj65jGnWHpUppbGbVVlKw0wQJjXHfJGGtHo9e6IPmRDZ7+an3K60aU4GlzvMuqv1mAn/HtkTQxrqgQ8lO/sR7AH/jiUGey7hSebC3l6upJWwPTdbxyW0BaYnBD5v/Dl0F3zVFAdB04t89/1O/w1cDnyilFU=')
-handler = WebhookHandler('4f8d9c9c7c6b29aaabcad4d6298a9a30')
+#line_bot_api = LineBotApi('etLFKVdRJ9GW/Je0Sj65jGnWHpUppbGbVVlKw0wQJjXHfJGGtHo9e6IPmRDZ7+an3K60aU4GlzvMuqv1mAn/HtkTQxrqgQ8lO/sR7AH/jiUGey7hSebC3l6upJWwPTdbxyW0BaYnBD5v/Dl0F3zVFAdB04t89/1O/w1cDnyilFU=')
+#handler = WebhookHandler('4f8d9c9c7c6b29aaabcad4d6298a9a30')
 
 
 static_tmp_path = os.path.join(os.path.dirname(__file__), 'static', 'tmp')
