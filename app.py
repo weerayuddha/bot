@@ -8,7 +8,8 @@ from linebot.exceptions import (
 )
 from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage,
-    ImageMessage, VideoMessage, AudioMessage
+    ImageMessage, VideoMessage, AudioMessage,
+    StickerMessage
 )
 from features.CarAnalytics import LicencePlate
 
@@ -22,8 +23,27 @@ app = Flask(__name__)
 
 lastet_image_path = ""
 
-line_bot_api = LineBotApi('+XTN3ua125UwCByjfRBLDddm8e0pXjYRsv1SChDKNM+nhewODx92TpLXvKMzh2GwvzRmgH6i9kBZtLRWagZZgGUAEGPmIUck3hTyJLoDwrMHwB4B2p0QDW9PIXL+r1OQDVFOoEwnCUCfOqy/DS3pIQdB04t89/1O/w1cDnyilFU=')
+channel_secret = os.getenv('LINE_CHANNEL_SECRET', None)
+channel_access_token = os.getenv('LINE_CHANNEL_ACCESS_TOKEN', None)
+
+if channel_secret is None:
+   print('Specify LINE_CHANNEL_SECRET as environment variable.')
+   sys.exit(1)
+if channel_access_token is None:
+   print('Specify LINE_CHANNEL_ACCESS_TOKEN as environment variable.')
+   sys.exit(1)
+
+line_bot_api = LineBotApi(channel_access_token)
+handler = WebhookHandler(channel_secret)
+
+#คำเขียว
+line_bot_api = LineBotApi('25fh1/p3BJu916+Zs39hsZNgb50c1RPaMNl7QGRRhGgWxhE53obct8ss1lZuR9OovzRmgH6i9kBZtLRWagZZgGUAEGPmIUck3hTyJLoDwrOXPz0i+hb+EOLslTB9S+TFPr4F9zOHoWo+Cb8z12aE6gdB04t89/1O/w1cDnyilFU=')
 handler = WebhookHandler('9ba5e5c4f5acef2daedfd744e34b6da0')
+
+#คำแก้ว
+line_bot_api = LineBotApi('etLFKVdRJ9GW/Je0Sj65jGnWHpUppbGbVVlKw0wQJjXHfJGGtHo9e6IPmRDZ7+an3K60aU4GlzvMuqv1mAn/HtkTQxrqgQ8lO/sR7AH/jiUGey7hSebC3l6upJWwPTdbxyW0BaYnBD5v/Dl0F3zVFAdB04t89/1O/w1cDnyilFU=')
+handler = WebhookHandler('4f8d9c9c7c6b29aaabcad4d6298a9a30')
+
 
 static_tmp_path = os.path.join(os.path.dirname(__file__), 'static', 'tmp')
 
@@ -44,9 +64,18 @@ def callback():
 
     return 'OK'
 
+@handler.add(MessageEvent, message=StickerMessage)
+def handle_sticker_message(event):
+   # Handle webhook verification
+    if event.reply_token == "ffffffffffffffffffffffffffffffff":
+       return 'OK'
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
+    # Handle webhook verification
+    if event.reply_token == "00000000000000000000000000000000":
+       return 'OK'
+
     if event.message.text == 'ราคาน้ำมัน':
         l = ptt.get_prices()
         s = ""
